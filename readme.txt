@@ -1,0 +1,1 @@
+Rechat is a simple chat server.

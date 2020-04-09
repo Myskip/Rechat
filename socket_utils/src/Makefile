@@ -1,6 +1,6 @@
 SRCS:=$(wildcard *.c)
 OBJS:=$(patsubst %.c,%.o,$(SRCS))
-CFLAG+=-I ../include
+override CFLAG+=-I ../include
 ifeq ($(DBG), 1)
 override CFLAG+=-g
 endif

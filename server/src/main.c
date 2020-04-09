@@ -21,11 +21,8 @@ void on_client_connect(int client_fd)
     }
 }
 
-void main()
+static void wait_exit(TCP_SERVER *server)
 {
-    printf("Rechat Server start...\n");
-    TCP_SERVER *server = tcp_server_create("127.0.0.0", 8080);
-    server->on_client_connect = on_client_connect;
     while (1)
     {
         char c = getchar();
@@ -35,4 +32,13 @@ void main()
             exit(1);
         }
     }
+}
+
+void main()
+{
+    printf("Rechat Server start...\n");
+    TCP_SERVER *server = tcp_server_create("127.0.0.0", 8080);
+    server->on_client_connect = on_client_connect;
+    
+    wait_exit(server);
 }
